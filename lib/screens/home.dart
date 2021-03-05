@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_trips/shared/screenTitle.dart';
-import 'package:ninja_trips/shared/tripList.dart';
+import 'package:ninja_trips/shared/doctorList.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
                   child: ScreenTitle(text: 'DocuTo'),
                 ),
                 Flexible(
-                  child: TripList(),
+                  child: DoctorList(),
                 )
               ],
             )));

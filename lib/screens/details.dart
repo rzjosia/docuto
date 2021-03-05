@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ninja_trips/models/Trip.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:ninja_trips/models/Doctor.dart';
 
 class Details extends StatelessWidget {
-  final Trip trip;
-  Details({@required this.trip});
+  final Doctor doctor;
+
+  Details({@required this.doctor});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,9 @@ class Details extends StatelessWidget {
             children: <Widget>[
               ClipRRect(
                   child: Hero(
-                    tag: 'location-img-${trip.img}',
+                    tag: 'location-img-${doctor.img}',
                     child: Image.asset(
-                      'images/${trip.img}',
+                      'images/${doctor.img}',
                       height: 360,
                       fit: BoxFit.cover,
                       alignment: Alignment.topCenter,
@@ -30,12 +31,12 @@ class Details extends StatelessWidget {
                   )),
               SizedBox(height: 30),
               ListTile(
-                title: Text(trip.title,
+                title: Text(doctor.title(),
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.grey[800])),
                 subtitle: Text('''
-Adresse : ${trip.address} à ${trip.location}
-Specialité : ${trip.specialty}
-Numéro : ${trip.number}
+Adresse : ${doctor.address} à ${doctor.location}
+Specialité : ${doctor.specialty}
+Numéro : ${doctor.phoneNumber}
  
 Selectionnez une date dans le calendrier : ''',
                     style: TextStyle(
