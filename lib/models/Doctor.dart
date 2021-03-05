@@ -5,10 +5,9 @@ class Doctor {
   String address;
   String phoneNumber;
   String specialty;
-  double price;
+  int price;
   String img;
   String location;
-  String _title;
 
 
   Doctor(this.id, this.surname, this.firstName, this.address, this.location, this.phoneNumber,
@@ -23,7 +22,7 @@ class Doctor {
       json['phoneNumber'],
       json['specialty'],
       json['price'],
-      'doctor1.png');
+      json['img']);
 
     String title() => '$firstName $surname';
 }

@@ -16,13 +16,13 @@ class _DoctorListState extends State<DoctorList> {
   void initState() {
     super.initState();
     _addDoctors();
-    print('Heeeeeeeeeeeeere : ${_doctorTiles}');
   }
 
   Future<void> _addDoctors() async {
     QuerySnapshot doctor =
-        await FirebaseFirestore.instance.collection('doctors').get();
+        await FirebaseFirestore.instance.collection('doctors').orderBy('price', descending: true).get();
     doctor.docs.map((doc) {
+      print('Here db : ${doc.data()['surname']}');
       Doctor currentDoctor = Doctor.fromJSON(doc.data());
       _doctorTiles.add(_buildTile(currentDoctor));
     }).toList();
