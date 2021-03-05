@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_trips/shared/screenTitle.dart';
-import 'package:ninja_trips/shared/tripList.dart';
+import 'package:ninja_trips/shared/doctorList.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -15,7 +15,9 @@ class _HomeState extends State<Home> {
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/bg.png"), fit: BoxFit.fitWidth, alignment: Alignment.topCenter),
+                  image: AssetImage("images/bg.png"),
+                  fit: BoxFit.fitWidth,
+                  alignment: Alignment.topCenter),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,9 +28,8 @@ class _HomeState extends State<Home> {
                   child: ScreenTitle(text: 'DocuTo'),
                 ),
                 Flexible(
-                  child: TripList(),
+                  child: DoctorList(),
                 )
-                //Sandbox(),
               ],
             )));
   }

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ninja_trips/models/Trip.dart';
-import 'package:ninja_trips/shared/heart.dart';
-import 'package:lipsum/lipsum.dart' as lipsum;
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:ninja_trips/models/Doctor.dart';
 
 class Details extends StatelessWidget {
-  final Trip trip;
-  Details({@required this.trip});
+  final Doctor doctor;
+
+  Details({@required this.doctor});
 
   @override
   Widget build(BuildContext context) {
@@ -22,35 +21,43 @@ class Details extends StatelessWidget {
             children: <Widget>[
               ClipRRect(
                   child: Hero(
-                tag: 'location-img-${trip.img}',
-                child: Image.asset(
-                  'images/${trip.img}',
-                  height: 280,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
-                ),
-              )),
+                    tag: 'location-img-${doctor.img}',
+                    child: Image.asset(
+                      'images/${doctor.img}',
+                      height: 360,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
+                    ),
+                  )),
               SizedBox(height: 30),
               ListTile(
-                  title: Text(trip.title,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.grey[800])),
-                  subtitle: Text('Ce medecin se stiue à ${trip.location}', style: TextStyle(letterSpacing: 1)),
-                  trailing: Heart()),
+                title: Text(doctor.title(),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.grey[800])),
+                subtitle: Text('''
+Adresse : ${doctor.address} à ${doctor.location}
+Specialité : ${doctor.specialty}
+Numéro : ${doctor.phoneNumber}
+ 
+Selectionnez une date dans le calendrier : ''',
+                    style: TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue[300], letterSpacing: 1)),
+              ),
               Padding(
-                  padding: EdgeInsets.all(18),
-                  child: SfCalendar(
-                    view: CalendarView.month,
-                    showDatePickerButton: true,
-                    allowViewNavigation: true,
-                    allowedViews: <CalendarView>[
-                      CalendarView.day,
-                      CalendarView.week,
-                      CalendarView.workWeek,
-                      CalendarView.month,
-                      CalendarView.schedule
-                    ],
-                    dataSource: _getCalendarDataSource(),
-                  )),
+                padding: EdgeInsets.all(18),
+                child: SfCalendar(
+                  view: CalendarView.month,
+                  showDatePickerButton: true,
+                  allowViewNavigation: true,
+                  allowedViews: <CalendarView>[
+                    CalendarView.day,
+                    CalendarView.week,
+                    CalendarView.workWeek,
+                    CalendarView.month,
+                    CalendarView.schedule
+                  ],
+                  dataSource: _getCalendarDataSource(),
+                ),
+              ),
             ],
           ),
         ));
