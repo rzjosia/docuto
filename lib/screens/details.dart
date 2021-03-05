@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_trips/models/Trip.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class Details extends StatelessWidget {
   final Trip trip;
@@ -34,11 +35,18 @@ class Details extends StatelessWidget {
                 subtitle: Text('''
 Adresse : ${trip.address} à ${trip.location}
 Specialité : ${trip.specialty}
-Numéro : ${trip.number}''',
+Numéro : ${trip.number}
+
+Selectionnez une date dans le calendrier : ''',
                     style: TextStyle(
                         fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue[300], letterSpacing: 1)),
               ),
-              Padding(padding: EdgeInsets.all(18), child: Text('Voici les disponibilités du ${trip.title} :')),
+              Padding(
+                padding: EdgeInsets.all(18),
+                child: SfCalendar(
+                  view: CalendarView.month,
+                ),
+              ),
             ],
           ),
         ));
