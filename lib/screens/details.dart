@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_trips/models/Trip.dart';
-import 'package:ninja_trips/shared/heart.dart';
-import 'package:lipsum/lipsum.dart' as lipsum;
 
 class Details extends StatelessWidget {
   final Trip trip;
@@ -31,14 +29,16 @@ class Details extends StatelessWidget {
               )),
               SizedBox(height: 30),
               ListTile(
-                  title: Text(trip.title,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.grey[800])),
-                  subtitle: Text('Ce medecin se stiue à ${trip.location}', style: TextStyle(letterSpacing: 1)),
-                  trailing: Heart()),
-              Padding(
-                  padding: EdgeInsets.all(18),
-                  child: Text(lipsum.createText(numParagraphs: 1, numSentences: 3),
-                      style: TextStyle(color: Colors.grey[600], height: 1.4))),
+                title: Text(trip.title,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.grey[800])),
+                subtitle: Text('''
+Adresse : ${trip.address} à ${trip.location}
+Specialité : ${trip.specialty}
+Numéro : ${trip.number}''',
+                    style: TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue[300], letterSpacing: 1)),
+              ),
+              Padding(padding: EdgeInsets.all(18), child: Text('Voici les disponibilités du ${trip.title} :')),
             ],
           ),
         ));

@@ -20,10 +20,38 @@ class _TripListState extends State<TripList> {
   void _addTrips() {
     // get data from db
     List<Trip> _trips = [
-      Trip(title: 'Andrew Adam', location: 'Lille', price: '50', img: 'doctor1.png'),
-      Trip(title: 'City Break', location: 'Tourcoing', price: '40', img: 'city.png'),
-      Trip(title: 'Ski Adventure', location: 'Roubaix', price: '35', img: 'ski.png'),
-      Trip(title: 'Space Blast', location: 'Lens', price: '25', img: 'space.png'),
+      Trip(
+          title: 'Docteur Roch Faubert',
+          location: 'Lille',
+          price: '50',
+          img: 'doctor1.png',
+          address: '62  Chemin Challet',
+          number: '03.53.04.96.63',
+          specialty: 'Généraliste'),
+      Trip(
+          title: 'Docteur Jay Covillon',
+          location: 'Tourcoing',
+          price: '40',
+          img: 'doctor2.png',
+          address: '83  quai Saint-Nicolas',
+          number: '03.20.28.13.31',
+          specialty: 'Dermatologue'),
+      Trip(
+          title: 'Docteur Daisi Therrien',
+          location: 'Roubaix',
+          price: '35',
+          img: 'doctor3.png',
+          address: '51 rue de la Bruyère',
+          number: '03.20.10.82.54',
+          specialty: 'Cardiologue'),
+      Trip(
+          title: 'Docteur Albertine Kingui',
+          location: 'Lens',
+          price: '25',
+          img: 'doctor4.png',
+          address: '65  rue du Général Ailleret',
+          number: '03.30.72.73.28',
+          specialty: 'Gastro-Entérologue'),
     ];
 
     _trips.forEach((Trip trip) {
@@ -41,6 +69,8 @@ class _TripListState extends State<TripList> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text('prix de la consultation : ${trip.price} €',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue[300])),
+          Text('specialité : ${trip.specialty}',
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue[300])),
           Text(trip.title, style: TextStyle(fontSize: 20, color: Colors.grey[600])),
         ],
