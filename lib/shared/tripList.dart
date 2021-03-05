@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_trips/models/Trip.dart';
 import 'package:ninja_trips/screens/details.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class TripList extends StatefulWidget {
   @override
