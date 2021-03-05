@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ninja_trips/models/Trip.dart';
 import 'package:ninja_trips/shared/heart.dart';
 import 'package:lipsum/lipsum.dart' as lipsum;
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class Details extends StatelessWidget {
   final Trip trip;
@@ -24,7 +25,7 @@ class Details extends StatelessWidget {
                 tag: 'location-img-${trip.img}',
                 child: Image.asset(
                   'images/${trip.img}',
-                  height: 360,
+                  height: 280,
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter,
                 ),
@@ -37,8 +38,9 @@ class Details extends StatelessWidget {
                   trailing: Heart()),
               Padding(
                   padding: EdgeInsets.all(18),
-                  child: Text(lipsum.createText(numParagraphs: 1, numSentences: 3),
-                      style: TextStyle(color: Colors.grey[600], height: 1.4))),
+                  child: SfCalendar(
+                    view: CalendarView.month,
+                  )),
             ],
           ),
         ));
