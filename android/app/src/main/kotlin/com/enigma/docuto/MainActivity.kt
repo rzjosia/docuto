@@ -1,4 +1,4 @@
-package com.example.ninja_trips
+package com.enigma.docuto
 
 import io.flutter.embedding.android.FlutterActivity
 

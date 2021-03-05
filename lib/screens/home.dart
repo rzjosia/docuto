@@ -15,7 +15,9 @@ class _HomeState extends State<Home> {
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/bg.png"), fit: BoxFit.fitWidth, alignment: Alignment.topCenter),
+                  image: AssetImage("images/bg.png"),
+                  fit: BoxFit.fitWidth,
+                  alignment: Alignment.topCenter),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +30,6 @@ class _HomeState extends State<Home> {
                 Flexible(
                   child: TripList(),
                 )
-                //Sandbox(),
               ],
             )));
   }
