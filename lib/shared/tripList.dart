@@ -72,6 +72,7 @@ class _TripListState extends State<TripList> {
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue[300])),
           Text('specialité : ${trip.specialty}',
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue[300])),
+
           Text(trip.title, style: TextStyle(fontSize: 20, color: Colors.grey[600])),
         ],
       ),

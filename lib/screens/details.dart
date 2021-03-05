@@ -20,14 +20,14 @@ class Details extends StatelessWidget {
             children: <Widget>[
               ClipRRect(
                   child: Hero(
-                tag: 'location-img-${trip.img}',
-                child: Image.asset(
-                  'images/${trip.img}',
-                  height: 360,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
-                ),
-              )),
+                    tag: 'location-img-${trip.img}',
+                    child: Image.asset(
+                      'images/${trip.img}',
+                      height: 360,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
+                    ),
+                  )),
               SizedBox(height: 30),
               ListTile(
                 title: Text(trip.title,
@@ -36,7 +36,7 @@ class Details extends StatelessWidget {
 Adresse : ${trip.address} à ${trip.location}
 Specialité : ${trip.specialty}
 Numéro : ${trip.number}
-
+ 
 Selectionnez une date dans le calendrier : ''',
                     style: TextStyle(
                         fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue[300], letterSpacing: 1)),
