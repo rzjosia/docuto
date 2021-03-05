@@ -40,9 +40,41 @@ class Details extends StatelessWidget {
                   padding: EdgeInsets.all(18),
                   child: SfCalendar(
                     view: CalendarView.month,
+                    showDatePickerButton: true,
+                    allowViewNavigation: true,
+                    allowedViews: <CalendarView>[
+                      CalendarView.day,
+                      CalendarView.week,
+                      CalendarView.workWeek,
+                      CalendarView.month,
+                      CalendarView.schedule
+                    ],
+                    dataSource: _getCalendarDataSource(),
                   )),
             ],
           ),
         ));
+  }
+
+  _AppointmentDataSource _getCalendarDataSource() {
+    List<Appointment> appointments = trip.appointments;
+    if (appointments != null) {
+      appointments.forEach((Appointment app) {
+        appointments.add(Appointment(
+          startTime: app.startTime,
+          endTime: app.endTime,
+          subject: app.subject,
+          color: app.color,
+        ));
+      });
+    }
+
+    return _AppointmentDataSource(appointments);
+  }
+}
+
+class _AppointmentDataSource extends CalendarDataSource {
+  _AppointmentDataSource(List<Appointment> source) {
+    appointments = source;
   }
 }
