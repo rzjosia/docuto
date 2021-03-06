@@ -15,7 +15,7 @@ class Details extends StatelessWidget {
           elevation: 0,
         ),
         extendBodyBehindAppBar: true,
-        body: Container(
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
