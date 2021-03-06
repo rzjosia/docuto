@@ -1,3 +1,5 @@
+import 'package:syncfusion_flutter_calendar/calendar.dart';
+
 class Doctor {
   String id;
   String surname;
@@ -8,10 +10,19 @@ class Doctor {
   int price;
   String img;
   String location;
+  List<Appointment> appointments;
 
-
-  Doctor(this.id, this.surname, this.firstName, this.address, this.location, this.phoneNumber,
-      this.specialty, this.price, this.img);
+  Doctor(
+      this.id,
+      this.surname,
+      this.firstName,
+      this.address,
+      this.location,
+      this.phoneNumber,
+      this.specialty,
+      this.price,
+      this.img,
+      this.appointments);
 
   static fromJSON(Map<String, dynamic> json) => Doctor(
       json['id'],
@@ -22,7 +33,8 @@ class Doctor {
       json['phoneNumber'],
       json['specialty'],
       json['price'],
-      json['img']);
+      json['img'],
+      json['appointments']);
 
-    String title() => '$firstName $surname';
+  String title() => '$firstName $surname';
 }
