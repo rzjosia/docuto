@@ -64,7 +64,7 @@ Selectionnez une date dans le calendrier : ''',
   }
 
   _AppointmentDataSource _getCalendarDataSource() {
-    List<Appointment> appointments = trip.appointments;
+    List<Appointment> appointments = doctor.appointments;
     if (appointments != null) {
       appointments.forEach((Appointment app) {
         appointments.add(Appointment(
