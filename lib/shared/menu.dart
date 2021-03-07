@@ -24,7 +24,7 @@ ${FirebaseAuth.instance.currentUser.email}
             ListTile(
               title: Text('Medecins'),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
               },
             ),
             ListTile(
@@ -35,7 +35,7 @@ ${FirebaseAuth.instance.currentUser.email}
               title: Text('Deconnexion'),
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginForm()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginForm()));
               },
             )
           ],

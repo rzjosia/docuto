@@ -33,7 +33,7 @@ class _LoginFormState extends State<LoginForm> {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: _email, password: _password);
 
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -69,7 +69,7 @@ class _LoginFormState extends State<LoginForm> {
         idToken: googleAuth.idToken,
       );
       await FirebaseAuth.instance.signInWithCredential(credential);
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
     } on FirebaseAuthException catch (e) {
       print(e.message.toString());
       Fluttertoast.showToast(
