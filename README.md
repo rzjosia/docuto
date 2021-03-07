@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # docuto
 
-A new Ninja Flutter project.
+Application de prise de rendez-vous médical.

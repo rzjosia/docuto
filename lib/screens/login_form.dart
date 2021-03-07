@@ -122,7 +122,7 @@ class _LoginFormState extends State<LoginForm> {
                         : null,
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Password'),
+                    decoration: InputDecoration(labelText: 'Mot de passe'),
                     validator: (val) =>
                         val.isEmpty ? 'Veuillez entrez un mot de passe' : null,
                     onSaved: (val) => _password = val,
