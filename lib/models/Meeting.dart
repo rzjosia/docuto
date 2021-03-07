@@ -7,5 +7,5 @@ class Meeting {
   Color background;
   bool isAllDay;
 
-  Meeting({this.eventName, this.from, this.to, this.background, this.isAllDay});
+  Meeting(this.eventName, this.from, this.to, this.background, this.isAllDay);
 }
