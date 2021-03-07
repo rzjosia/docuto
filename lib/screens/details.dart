@@ -14,61 +14,69 @@ class Details extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Dr. ${doctor.title()}'),
-          backgroundColor: Colors.blueAccent,
-          elevation: 0,
-        ),
-        drawer: Menu.getMenu(context),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              ClipRRect(
-                  child: Hero(
-                tag: 'location-img-${doctor.img}',
-                child: Image.asset(
-                  'images/${doctor.img}',
-                  height: 360,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
-                ),
-              )),
-              SizedBox(height: 30),
-              ListTile(
-                title: Text(doctor.title(),
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.grey[800])),
-                subtitle: Text('''
+      appBar: AppBar(
+        title: Text('Dr. ${doctor.title()}'),
+        backgroundColor: Colors.blueAccent,
+        elevation: 0,
+      ),
+      drawer: Menu.getMenu(context),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            ClipRRect(
+                child: Hero(
+              tag: 'location-img-${doctor.img}',
+              child: Image.asset(
+                'images/${doctor.img}',
+                height: 360,
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
+              ),
+            )),
+            SizedBox(height: 30),
+            ListTile(
+              title: Text(doctor.title(),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.grey[800])),
+              subtitle: Text('''
 Adresse : ${doctor.address} à ${doctor.location}
 Specialité : ${doctor.specialty}
 Numéro : ${doctor.phoneNumber}
  
 Selectionnez une date dans le calendrier : ''',
-                    style: TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue[300], letterSpacing: 1)),
+                  style:
+                      TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue[300], letterSpacing: 1)),
+            ),
+            Padding(
+              padding: EdgeInsets.all(18),
+              child: SfCalendar(
+                view: CalendarView.month,
+                showDatePickerButton: true,
+                allowViewNavigation: true,
+                showNavigationArrow: true,
+                allowedViews: <CalendarView>[
+                  CalendarView.day,
+                  CalendarView.week,
+                  CalendarView.workWeek,
+                  CalendarView.month,
+                  CalendarView.schedule
+                ],
+                dataSource: MeetingDataSource(_getDataSource()),
+                appointmentTimeTextFormat: 'HH:mm',
+                monthViewSettings: MonthViewSettings(showAgenda: true),
               ),
-              Padding(
-                padding: EdgeInsets.all(18),
-                child: SfCalendar(
-                  view: CalendarView.month,
-                  showDatePickerButton: true,
-                  allowViewNavigation: true,
-                  showNavigationArrow: true,
-                  allowedViews: <CalendarView>[
-                    CalendarView.day,
-                    CalendarView.week,
-                    CalendarView.workWeek,
-                    CalendarView.month,
-                    CalendarView.schedule
-                  ],
-                  dataSource: MeetingDataSource(_getDataSource()),
-                  appointmentTimeTextFormat: 'HH:mm',
-                  monthViewSettings: MonthViewSettings(showAgenda: true),
-                ),
-              ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //Navigator.push(context, MaterialPageRoute(builder: (context) => EventForm()));
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.green,
+      ),
+    );
   }
 
   List<Meeting> _getDataSource() {
