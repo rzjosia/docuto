@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ninja_trips/shared/meetingDataSource.dart';
 import 'package:ninja_trips/shared/menu.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:ninja_trips/models/Doctor.dart';
+
+import '../models/Meeting.dart';
 
 class Details extends StatelessWidget {
   final Doctor doctor;
@@ -23,14 +26,14 @@ class Details extends StatelessWidget {
             children: <Widget>[
               ClipRRect(
                   child: Hero(
-                    tag: 'location-img-${doctor.img}',
-                    child: Image.asset(
-                      'images/${doctor.img}',
-                      height: 360,
-                      fit: BoxFit.cover,
-                      alignment: Alignment.topCenter,
-                    ),
-                  )),
+                tag: 'location-img-${doctor.img}',
+                child: Image.asset(
+                  'images/${doctor.img}',
+                  height: 360,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                ),
+              )),
               SizedBox(height: 30),
               ListTile(
                 title: Text(doctor.title(),
@@ -50,6 +53,7 @@ Selectionnez une date dans le calendrier : ''',
                   view: CalendarView.month,
                   showDatePickerButton: true,
                   allowViewNavigation: true,
+                  showNavigationArrow: true,
                   allowedViews: <CalendarView>[
                     CalendarView.day,
                     CalendarView.week,
@@ -57,7 +61,9 @@ Selectionnez une date dans le calendrier : ''',
                     CalendarView.month,
                     CalendarView.schedule
                   ],
-                  dataSource: _getCalendarDataSource(),
+                  dataSource: MeetingDataSource(_getDataSource()),
+                  appointmentTimeTextFormat: 'HH:mm',
+                  monthViewSettings: MonthViewSettings(showAgenda: true),
                 ),
               ),
             ],
@@ -65,25 +71,12 @@ Selectionnez une date dans le calendrier : ''',
         ));
   }
 
-  _AppointmentDataSource _getCalendarDataSource() {
-    List<Appointment> appointments = doctor.appointments;
-    if (appointments != null) {
-      appointments.forEach((Appointment app) {
-        appointments.add(Appointment(
-          startTime: app.startTime,
-          endTime: app.endTime,
-          subject: app.subject,
-          color: app.color,
-        ));
-      });
-    }
-
-    return _AppointmentDataSource(appointments);
-  }
-}
-
-class _AppointmentDataSource extends CalendarDataSource {
-  _AppointmentDataSource(List<Appointment> source) {
-    appointments = source;
+  List<Meeting> _getDataSource() {
+    var meetings = <Meeting>[];
+    final DateTime today = DateTime.now();
+    final DateTime startTime = DateTime(today.year, today.month, today.day, 9, 0, 0);
+    final DateTime endTime = startTime.add(const Duration(hours: 2));
+    meetings.add(Meeting('Conference', startTime, endTime, const Color(0xFF0F8644), false));
+    return meetings;
   }
 }
