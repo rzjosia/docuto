@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ninja_trips/shared/menu.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:ninja_trips/models/Doctor.dart';
 
@@ -11,11 +12,12 @@ class Details extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          title: Text('Dr. ${doctor.title()}'),
+          backgroundColor: Colors.blueAccent,
           elevation: 0,
         ),
-        extendBodyBehindAppBar: true,
-        body: Container(
+        drawer: Menu.getMenu(context),
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[

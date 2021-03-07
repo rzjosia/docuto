@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ninja_trips/shared/screenTitle.dart';
 import 'package:ninja_trips/shared/doctorList.dart';
+import 'package:ninja_trips/shared/menu.dart';
+import 'package:ninja_trips/shared/screenTitle.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,26 +12,34 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/bg.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.topCenter),
+      appBar: AppBar(
+        title: Text('Medecins'),
+        backgroundColor: Colors.blueAccent,
+        elevation: 0,
+      ),
+      drawer: Menu.getMenu(context),
+      body: Container(
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("images/bg.png"),
+              fit: BoxFit.fitWidth,
+              alignment: Alignment.topCenter),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(height: 30),
+            SizedBox(
+              height: 200,
+              child: ScreenTitle(text: 'DocuTo'),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(height: 30),
-                SizedBox(
-                  height: 200,
-                  child: ScreenTitle(text: 'DocuTo'),
-                ),
-                Flexible(
-                  child: DoctorList(),
-                )
-              ],
-            )));
+            Flexible(
+              child: DoctorList(),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
