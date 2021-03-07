@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ninja_trips/shared/doctorList.dart';
+import 'package:ninja_trips/shared/menu.dart';
 import 'package:ninja_trips/shared/screenTitle.dart';
 
 class Home extends StatefulWidget {
@@ -11,6 +12,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Medecins'),
+        backgroundColor: Colors.blueAccent,
+        elevation: 0,
+      ),
+      drawer: Menu.getMenu(context),
       body: Container(
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(

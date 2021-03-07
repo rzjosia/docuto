@@ -11,7 +11,6 @@ class DoctorList extends StatefulWidget {
 }
 
 class _DoctorListState extends State<DoctorList> {
-  List<Widget> _doctorTiles = [];
   final GlobalKey _listKey = GlobalKey();
 
   @override
