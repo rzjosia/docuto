@@ -28,7 +28,8 @@ class _DoctorListState extends State<DoctorList> {
     return doctor.docs.map((doc) {
       print('Here db : ${doc.data()['surname']}');
       Doctor currentDoctor = Doctor.fromJSON(doc.data());
-      print(currentDoctor);
+      currentDoctor.id = doc.id;
+      print(currentDoctor.id);
       return _buildTile(currentDoctor);
     }).toList();
   }
