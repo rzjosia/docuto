@@ -30,8 +30,7 @@ class _LoginFormState extends State<LoginForm> {
     try {
       print('Email $_email');
       print('Mdp $_password');
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: _email, password: _password);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
 
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
     } on FirebaseAuthException catch (e) {
@@ -61,8 +60,7 @@ class _LoginFormState extends State<LoginForm> {
   Future<void> signInWithGoogle(context) async {
     try {
       final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
       final GoogleAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
@@ -123,8 +121,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   TextFormField(
                     decoration: InputDecoration(labelText: 'Mot de passe'),
-                    validator: (val) =>
-                        val.isEmpty ? 'Veuillez entrez un mot de passe' : null,
+                    validator: (val) => val.isEmpty ? 'Veuillez entrez un mot de passe' : null,
                     onSaved: (val) => _password = val,
                     obscureText: true,
                   ),
