@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ninja_trips/models/Meeting.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'Meeting.dart';
 
 class Doctor extends Appointment {
   String id;
@@ -13,6 +14,7 @@ class Doctor extends Appointment {
   String img;
   String location;
   List<Meeting> appointments;
+
 
   Doctor(
       this.id,
@@ -27,18 +29,8 @@ class Doctor extends Appointment {
       this.appointments) {
     this.appointments = this.appointments ?? <Meeting>[];
   }
-
-  static fromJSON(Map<String, dynamic> json) => Doctor(
-      json['id'],
-      json['surname'],
-      json['firstName'],
-      json['address'],
-      json['location'],
-      json['phoneNumber'],
-      json['specialty'],
-      json['price'],
-      json['img'],
-      json['appointments']);
+  static fromJSON(Map<String, dynamic> json) => Doctor(json['id'], json['surname'], json['firstName'], json['address'],
+      json['location'], json['phoneNumber'], json['specialty'], json['price'], json['img'], json['appointments']);
 
   addAppointment(Meeting appointment) async {
     appointments.add(appointment);
